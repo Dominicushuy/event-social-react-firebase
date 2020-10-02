@@ -103,7 +103,7 @@ export default function eventReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         retainState: true,
-        countEvents: state.events.length === 0 ? 2 : state.events.length,
+        // countEvents: state.events.length === 0 ? 2 : state.events.length,
       };
     default:
       return state;

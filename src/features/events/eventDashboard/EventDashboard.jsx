@@ -20,7 +20,6 @@ export default function EventDashboard() {
     startDate,
     lastVisible,
     retainState,
-    countEvents,
   } = useSelector((state) => state.event);
   const { loading } = useSelector((state) => state.async);
   const { authenticated } = useSelector((state) => state.auth);
@@ -28,20 +27,15 @@ export default function EventDashboard() {
 
   useEffect(() => {
     setLoadingInitial(true);
-    if (retainState) {
-      dispatch(fetchReloadEvent(countEvents)).then(() => {
-        setLoadingInitial(false);
-      });
-    } else {
-      dispatch(fetchEvents(filter, startDate, limit)).then(() => {
-        setLoadingInitial(false);
-      });
-    }
+    if (retainState) return;
+    dispatch(fetchEvents(filter, startDate, limit)).then(() => {
+      setLoadingInitial(false);
+    });
 
     return () => {
       dispatch({ type: RETAIN_STATE });
     };
-  }, [dispatch, filter, startDate, retainState, countEvents]);
+  }, [dispatch, filter, startDate, retainState]);
 
   function handleFetchNextEvents() {
     dispatch(fetchEvents(filter, startDate, limit, lastVisible));
