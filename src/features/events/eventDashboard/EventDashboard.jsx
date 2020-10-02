@@ -4,7 +4,7 @@ import EventList from './EventList';
 import { useSelector, useDispatch } from 'react-redux';
 import EventListItemPlaceholder from './EventListItemPlaceholder';
 import EventFilters from './EventFilters';
-import { fetchEvents, fetchReloadEvent } from '../eventActions';
+import { fetchEvents } from '../eventActions';
 import { useState } from 'react';
 import EventsFeed from './EventsFeed';
 import { useEffect } from 'react';
